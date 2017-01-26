@@ -1,0 +1,12 @@
+<button md-icon-button [mdMenuTriggerFor]="menu" class="menu-toggle">
+	<md-icon>
+		<svg viewBox="0 0 24 24">
+			<use xlink:href="#app-menu"></use>
+		</svg> 
+	</md-icon>
+</button>
+
+<md-menu #menu="mdMenu">
+    <button md-menu-item> Поиск </button>
+    <button md-menu-item> Добавить </button>
+</md-menu>

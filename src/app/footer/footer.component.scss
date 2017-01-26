@@ -1,0 +1,15 @@
+@import '../../assets/styles/_vars.scss';
+
+.footer {
+	background-color: md-color($primary);
+	height: $footer-height;
+}
+
+.created-by {
+	float: right;
+	color: $light;
+	font-size: 0.7em;
+	line-height: $footer-height;
+	margin: 0;
+	padding-right: 10px;
+}

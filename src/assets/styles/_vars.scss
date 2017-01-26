@@ -1,0 +1,17 @@
+@import '~@angular/material/core/theming/all-theme';
+
+// NOTE: Theming is currently experimental and not yet publically released!
+
+@include md-core();
+
+$primary: md-palette($md-deep-purple);
+$accent:  md-palette($md-amber, A200, A100, A400);
+$light: rgba(255, 255, 255, 0.87);
+$light-text: rgba(110, 110, 110, 1);
+
+$header-height: 100px; 
+$footer-height: 40px;
+
+//Layout
+
+$md: 680px;

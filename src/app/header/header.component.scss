@@ -1,0 +1,29 @@
+@import '../../assets/styles/_vars.scss';
+
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: md-color($primary);
+	height: $header-height;
+	padding: 0 20px 0 20px;
+}
+
+.app-title {
+	font-weight: normal;
+	padding: 5px;
+	color: $light;
+}
+
+.app-logo-ref {
+	display: flex;
+	align-items: center;
+	text-decoration: none;	
+	color: currentColor;
+	margin-right: auto;
+}
+
+.app-menu {
+	float: right;
+}

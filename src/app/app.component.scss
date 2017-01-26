@@ -1,0 +1,14 @@
+.app {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 100vh;
+}
+
+.main {
+	margin-bottom: auto;
+}
+
+.icon-library {
+	display: none;
+}
