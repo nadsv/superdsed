@@ -1,0 +1,24 @@
+
+<label for="input-file-id"  class="load-btn" md-raised-button>
+	Выбрать файлы
+    <input id="input-file-id" type="file" hidden multiple id="input-file-id" (change)="onLoadBtnClick($event)">
+</label>
+
+<div class="filelist-wrapper" *ngIf="files.length">
+	<md-list class="filelist">
+	  <md-list-item *ngFor="let file of files; let i=index; trackBy: trackByFn" class="filelist__list-item">
+		<a md-line href="{{file.link}}">{{file.name}}</a>
+	    <button md-icon-button (click)="onDeleteFile(i)" class="filelist__del-item">
+		        <md-icon>
+					<svg viewBox="0 0 16 16">
+						<use xlink:href="#delete"></use>
+					</svg> 
+		        </md-icon>
+		</button>
+	  	</md-list-item>
+	</md-list>
+</div>
+
+
+
+

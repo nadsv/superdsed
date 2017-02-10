@@ -1,0 +1,29 @@
+<div class="tabs__wrapper">
+	<ul class="tabs__header">
+  		<li class="tabs__link" (click)="onClick($event, 0)" [style.background-color]="getHeaderStyle(0)">Текст</li>
+  		<li class="tabs__link" (click)="onClick($event, 1)" [style.background-color]="getHeaderStyle(1)">Приложения</li>
+  		<li class="tabs__link" (click)="onClick($event, 2)" [style.background-color]="getHeaderStyle(2)">Изменения</li>
+  		<li class="tabs__link" (click)="onClick($event, 3)" [style.background-color]="getHeaderStyle(3)">Исполнители</li>
+  		<li class="tabs__link" (click)="onClick($event, 4)" [style.background-color]="getHeaderStyle(4)">Контролеры</li>
+	</ul>
+
+	<div id="text" class="tabs__content" [style.display]="getContentStyle(0)">
+		<app-fileloader></app-fileloader>
+	</div>
+
+	<div id="applications" class="tabs__content" [style.display]="getContentStyle(1)">
+		<app-fileloader></app-fileloader> 
+	</div>
+
+	<div id="changes" class="tabs__content" [style.display]="getContentStyle(2)">
+	  <p>Изменения</p>
+	</div>
+
+	<div id="executors" class="tabs__content" [style.display]="getContentStyle(3)">
+	  <p>Исполнители</p>
+	</div>
+
+	<div id="controlers" class="tabs__content" [style.display]="getContentStyle(4)">
+	  <p>Контролеры</p>
+	</div>
+</div>

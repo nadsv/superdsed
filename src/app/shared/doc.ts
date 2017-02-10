@@ -8,6 +8,7 @@ export class Doc {
 	num: number;
 	date: string;
 	name: string;
+	base: string;
 	status: boolean;
 	id_section: number;
 	changes: Change[];
