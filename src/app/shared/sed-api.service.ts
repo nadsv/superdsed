@@ -10,10 +10,20 @@ export class SedApiService {
     apiUrl: string;
     dataUrl: string;
     id: number;
+    urlDoc: string;
+    urlAddDoc: string;
+    urlDelDoc: string;
+    urlGetSections: string;
+    urlGetMainDocs: string;
 
     constructor(private http: Http) {
         this.apiUrl = '/supersed/api/';
         this.dataUrl = '/supersed/data/';
+        this.urlDoc = 'doc.php';
+        this.urlAddDoc = 'add-doc.php';
+        this.urlDelDoc = 'del-doc.php';
+        this.urlGetSections = 'sections.php';
+        this.urlGetMainDocs = 'main-docs.php';
     }
 
     fetchData(url: string): Observable<any> {
@@ -27,7 +37,7 @@ export class SedApiService {
                     .catch(this.handleError);
     }
 
-    saveData(url: string, item?: any): Observable<any> {
+    changeData(url: string, item?: any): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 

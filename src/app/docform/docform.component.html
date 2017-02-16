@@ -23,20 +23,19 @@
 	<label class="doc_form__field   doc_form__field--medium doc_form__field--padding">
 		<span class="doc_form__field-name  doc_form__field-name--short">Раздел</span>
 		<md-select class="doc_form__field--long" formControlName="section">
-			<md-option value="0">Общее</md-option>
-	    	<md-option value="1">Информационная безопасность</md-option>
-	    	<md-option value="2">Персональные данные</md-option>
+			<md-option *ngFor="let section of sections" [value]="section.id">{{section.name}}</md-option>
 		</md-select>
 	</label>
 	<label class="doc_form__field   doc_form__field--medium doc_form__field--padding">
 		<span class="doc_form__field-name  doc_form__field-name--short">Поправки для</span>
 		<md-select class="doc_form__field--long" formControlName="maindoc">
-	    	<md-option >№12 от 20.12.2015</md-option>
-	    	<md-option >№132 от 01.10.2016</md-option>
+	    	<md-option *ngFor="let maindoc of mainDocs" [value]="maindoc.id">от {{maindoc.date}} №{{maindoc.num}}</md-option>
 		</md-select>
 	</label>
-	<app-tabs></app-tabs>
-	<button md-raised-button class="doc_form__btn" [disabled]="docForm.invalid">Сохранить</button>
-	<button md-raised-button class="doc_form__btn">Удалить</button>
-	<button md-raised-button class="doc_form__btn" routerLink="/">Закрыть</button>
+	<app-tabs *ngIf="tabsVisible"></app-tabs>
+	<div class="doc_form__action">
+		<button md-raised-button class="doc_form__btn" [disabled]="docForm.invalid" *ngIf="docForm.dirty">Добавить</button>
+		<button md-raised-button class="doc_form__btn" *ngIf="delBtnVisible" (click)="onDelete()" type="button">Удалить</button>
+		<button md-raised-button class="doc_form__btn" routerLink="/" type="button">Закрыть</button>
+	</div>
 </form>
