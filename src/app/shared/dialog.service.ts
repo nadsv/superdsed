@@ -8,7 +8,7 @@ export class DialogsService {
 
     constructor(private dialog: MdDialog) { }
 
-    public confirm(title: string, message: string, viewContainerRef: ViewContainerRef): Observable<boolean> {
+    public inform(title: string, message: string, btnYesVisible: boolean, viewContainerRef: ViewContainerRef): Observable<boolean> {
 
         let dialogRef: MdDialogRef<DialogComponent>;
         let config = new MdDialogConfig();
@@ -18,6 +18,7 @@ export class DialogsService {
 
         dialogRef.componentInstance.title = title;
         dialogRef.componentInstance.message = message;
+        dialogRef.componentInstance.param1 = btnYesVisible; 
 
         return dialogRef.afterClosed();
     }

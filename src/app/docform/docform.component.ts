@@ -58,7 +58,7 @@ export class DocformComponent implements OnInit {
                     this.sections = items;
                 },
                 error => {
-                    this.dialogsService.confirm('Сообщение об ошибке', 'Справочник разделов недоступен: ' + error, this.viewContainerRef);
+                    this.dialogsService.inform('Сообщение об ошибке', 'Справочник разделов недоступен: ' + error, false, this.viewContainerRef);
                     this.docForm.invalid = true;
                 }
             );
@@ -75,7 +75,7 @@ export class DocformComponent implements OnInit {
                     }
                 },
                 error => {
-                    this.dialogsService.confirm('Сообщение об ошибке', 'Список документов незаружен.: ' + error, this.viewContainerRef);
+                    this.dialogsService.inform('Сообщение об ошибке', 'Список документов незаружен.: ' + error, false, this.viewContainerRef);
                     this.docForm.invalid = true;
                 }
             );
@@ -83,34 +83,47 @@ export class DocformComponent implements OnInit {
     }
 
 	onSubmit( docForm: any ) {
-		this.sedAPI.changeData(this.sedAPI.apiUrl+this.sedAPI.urlAddDoc, this.docForm.value)
+		this.sedAPI.changeData(this.sedAPI.apiUrl + this.sedAPI.urlAddDoc, this.docForm.value)
 			.subscribe(
         		( item ) => {
-        			this.dialogsService.confirm('Сообщение', 'Документ сохранен. Добавьте приложения и исполнителей', this.viewContainerRef);
+        			this.dialogsService.inform('Сообщение', 'Документ сохранен. Добавьте приложения и исполнителей', false, this.viewContainerRef);
         			this.tabsVisible = true;
                     this.docForm.markAsPristine();
                     this.delBtnVisible = true;
                     window.history.pushState('', '', this.path + '/' + item.id );
                     this.id = item.id;
         		},
-        		error => this.dialogsService.confirm('Сообщение об ошибке', 'Сохранение данных невозможно: ' + error, this.viewContainerRef)
+        		error => this.dialogsService.inform('Сообщение об ошибке', 'Сохранение данных невозможно: ' + error, false, this.viewContainerRef)
         	);
 	}
 
     onDelete () {
+
+        this.dialogsService.inform('Вопрос', 'Удалить документ?', true, this.viewContainerRef)
+                            .subscribe (
+                                ( result ) => { if ( result ) { this.deleteDoc() } },
+                                () => {}
+                            );
+
+    }
+
+    deleteDoc() {
         const item = JSON.stringify({ 'id': this.id});
         this.sedAPI.changeData( this.sedAPI.apiUrl + this.sedAPI.urlDelDoc, item)
             .subscribe (
                 () => { 
                         this.docForm.reset();
-                        this.dialogsService.confirm('Сообщение', 'Документ удален', this.viewContainerRef);
-                        this.router.navigate(['/' + this.path, 0]);
                         this.tabsVisible = false;
                         this.delBtnVisible = false;
-                        this.docForm.markAsPristine();
+                        this.dialogsService.inform('Сообщение', 'Документ удален', false, this.viewContainerRef)
+                            .subscribe (
+                                () => this.router.navigate(['/']),
+                                () => {}
+                            )
+                        
                       },
-                error => { this.dialogsService.confirm('Сообщение об ошибке', 'При удалении документа произошла ошибка: '+ error, this.viewContainerRef); }
-            );
+                error => { this.dialogsService.inform('Сообщение об ошибке', 'При удалении документа произошла ошибка: '+ error, false, this.viewContainerRef); }
+            ); 
     }
 
 }

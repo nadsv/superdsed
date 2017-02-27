@@ -1,6 +1,7 @@
 <header class="header">{{ title }}</header>
 <main class="main">
 	<div class="content">{{ message }}</div>
-	<button class="confirm-btn" type="button" md-raised-button (click)="dialogRef.close()">OK</button>
+	<button class="confirm-btn" type="button" md-raised-button *ngIf="param1" (click)="dialogRef.close(1)">Да</button>
+	<button class="confirm-btn" type="button" md-raised-button (click)="dialogRef.close(0)">Закрыть</button>
 </main>
  

@@ -19,6 +19,7 @@ import { GrouplistComponent } from './grouplist/grouplist.component';
 import { FileloaderComponent } from './fileloader/fileloader.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { DialogComponent } from './dialog/dialog.component';
         GrouplistComponent,
         FileloaderComponent,
         TabsComponent,
-        DialogComponent
+        DialogComponent,
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,

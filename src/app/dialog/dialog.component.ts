@@ -10,8 +10,9 @@ export class DialogComponent {
 
     public title: string;
     public message: string;
+    public param1: boolean;
 
     constructor(public dialogRef: MdDialogRef<DialogComponent>) {
-
     }
+
 }
