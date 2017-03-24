@@ -1,0 +1,30 @@
+
+@import '../../../../assets/styles/_vars.scss';
+
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	min-width: 200px;
+	padding: 0 20px;
+}
+
+.item {
+	min-width: 200px;
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+	transform: translate3d(0,0,0);
+
+	&__title {
+		padding: 10px 16px;
+		background-color: $text-background;
+		margin: 0;
+	}
+
+	&__wrapper {
+		overflow-y: auto;
+		max-height: 165px;
+	}
+}
+
+.item ~ .item{
+	margin-left: 40px;
+}

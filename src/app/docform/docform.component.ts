@@ -46,6 +46,7 @@ export class DocformComponent implements OnInit {
       	this.tabsVisible = false;
         this.fetchSections();
         this.fetchMainDocs();
+        this.fetchUsers();
         this.route.url.subscribe( (url) => this.path = url[0].path );
         this.route.params.subscribe( (params) => this.delBtnVisible = ( +params['id'] ) ? true : false );
         
@@ -82,6 +83,18 @@ export class DocformComponent implements OnInit {
         
     }
 
+    fetchUsers() {
+        this.sedAPI.fetchData( this.sedAPI.apiUrl + this.sedAPI.urlGetUsers )
+              .subscribe(
+                items => {
+                    this.sedAPI.users = items;
+                },
+                error => {
+                    this.dialogsService.inform('Сообщение об ошибке', 'Справочник пользователей недоступен: ' + error, false, this.viewContainerRef);
+                }
+            );
+    }
+
 	onSubmit( docForm: any ) {
 		this.sedAPI.changeData(this.sedAPI.apiUrl + this.sedAPI.urlAddDoc, this.docForm.value)
 			.subscribe(
@@ -92,6 +105,7 @@ export class DocformComponent implements OnInit {
                     this.delBtnVisible = true;
                     window.history.pushState('', '', this.path + '/' + item.id );
                     this.id = item.id;
+                    this.sedAPI.id = this.id; 
         		},
         		error => this.dialogsService.inform('Сообщение об ошибке', 'Сохранение данных невозможно: ' + error, false, this.viewContainerRef)
         	);

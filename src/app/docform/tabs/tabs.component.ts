@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { SedApiService } from '../../shared/sed-api.service';
+import { DialogsService } from '../../shared/dialog.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
 	activeTab: number = 0;
+	ID: number;
 
-	constructor() { }
+	constructor(private sedAPI: SedApiService,
+		        private dialogsService: DialogsService, 
+                private viewContainerRef: ViewContainerRef) { }
 
 	ngOnInit() {
+		this.ID =  this.sedAPI.id;
 	}
 
 	onClick(event, i) {

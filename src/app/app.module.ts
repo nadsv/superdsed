@@ -15,11 +15,12 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { SearchformComponent } from './searchform/searchform.component';
 import { DocformComponent } from './docform/docform.component';
-import { GrouplistComponent } from './grouplist/grouplist.component';
-import { FileloaderComponent } from './fileloader/fileloader.component';
-import { TabsComponent } from './tabs/tabs.component';
+import { FileloaderComponent } from './docform/fileloader/fileloader.component';
+import { TabsComponent } from './docform/tabs/tabs.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import { UserListsComponent } from './docform/user-lists/user-lists.component';
+import { UserListComponent } from './docform/user-lists/user-list/user-list.component';
 
 
 @NgModule({
@@ -30,11 +31,12 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
         MenuComponent,
         SearchformComponent,
         DocformComponent,
-        GrouplistComponent,
         FileloaderComponent,
         TabsComponent,
         DialogComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        UserListsComponent,
+        UserListComponent
     ],
     imports: [
         BrowserModule,

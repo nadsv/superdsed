@@ -10,11 +10,13 @@ export class SedApiService {
     apiUrl: string;
     dataUrl: string;
     id: number;
+    users: any[];
     urlDoc: string;
     urlAddDoc: string;
     urlDelDoc: string;
     urlGetSections: string;
     urlGetMainDocs: string;
+    urlGetUsers: string;
 
     constructor(private http: Http) {
         this.apiUrl = '/supersed/api/';
@@ -24,6 +26,7 @@ export class SedApiService {
         this.urlDelDoc = 'del-doc.php';
         this.urlGetSections = 'sections.php';
         this.urlGetMainDocs = 'main-docs.php';
+        this.urlGetUsers = 'users.php';
     }
 
     fetchData(url: string): Observable<any> {

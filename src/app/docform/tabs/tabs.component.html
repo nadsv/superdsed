@@ -8,22 +8,22 @@
 	</ul>
 
 	<div id="text" class="tabs__content" [style.display]="getContentStyle(0)">
-		<app-fileloader></app-fileloader>
+		<app-fileloader [idDoc]="ID" type="0"></app-fileloader>
 	</div>
 
 	<div id="applications" class="tabs__content" [style.display]="getContentStyle(1)">
-		<app-fileloader></app-fileloader> 
+		<app-fileloader [idDoc]="ID" type="1"></app-fileloader> 
 	</div>
 
 	<div id="changes" class="tabs__content" [style.display]="getContentStyle(2)">
-	  <p>Изменения</p>
+		<p>Изменения</p>
 	</div>
 
 	<div id="executors" class="tabs__content" [style.display]="getContentStyle(3)">
-	  <p>Исполнители</p>
+		<app-user-lists [idDoc]="ID"></app-user-lists>
 	</div>
 
 	<div id="controlers" class="tabs__content" [style.display]="getContentStyle(4)">
-	  <p>Контролеры</p>
+		<app-user-lists [idDoc]="ID"></app-user-lists>
 	</div>
 </div>

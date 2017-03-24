@@ -1,7 +1,7 @@
 
-<label for="input-file-id"  class="load-btn" md-raised-button>
+<label class="load-btn" md-raised-button>
 	Выбрать файлы
-    <input id="input-file-id" type="file" hidden multiple id="input-file-id" (change)="onLoadBtnClick($event)">
+    <input type="file" hidden multiple (change)="onLoadBtnClick( $event )">
 </label>
 
 <div class="filelist-wrapper" *ngIf="files.length">

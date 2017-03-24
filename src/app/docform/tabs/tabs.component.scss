@@ -1,3 +1,5 @@
+@import '../../../assets/styles/_vars.scss';
+
 .tabs {
 	&__wrapper {
 		border: 1px solid #ccc;
@@ -10,7 +12,7 @@
 	    padding: 0;
 	    overflow: hidden;
 	    border-bottom: 1px solid #ccc;
-	    background-color: #f1f1f1;
+	    background-color: $text-background;
 	}
 
 	&__link {

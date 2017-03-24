@@ -1,0 +1,25 @@
+<h3>
+  {{title}}
+</h3>
+<div class="list">
+	<div class="item">
+		<h4 class="item__title">Не выбраны</h4>
+		<div class="item__wrapper">
+			<md-list dense>
+				<md-list-item  *ngFor="let item of items">
+					{{item}}
+				</md-list-item>
+			</md-list>
+		</div>
+	</div>
+	<div class="item">
+		<h4 class="item__title">Выбраны</h4>
+		<div class="item__wrapper">
+			<md-list dense>
+				<md-list-item>
+					Сидоров
+				</md-list-item>
+			</md-list>
+		</div>
+	</div>
+</div>
