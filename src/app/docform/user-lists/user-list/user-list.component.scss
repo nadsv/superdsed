@@ -23,6 +23,11 @@
 		overflow-y: auto;
 		max-height: 165px;
 	}
+
+	&__button {
+		width: 100%;
+		text-align: left;
+	}
 }
 
 .item ~ .item{

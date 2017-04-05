@@ -20,15 +20,17 @@
 		<span class="doc_form__field-name">Основание</span>
 		<md-textarea class="md-textarea  doc_form__field--long" formControlName="base" rows="2"></md-textarea>
 	</label>
-	<label class="doc_form__field   doc_form__field--medium doc_form__field--padding">
+    <label class="doc_form__field   doc_form__field--medium doc_form__field--padding">
 		<span class="doc_form__field-name  doc_form__field-name--short">Раздел</span>
 		<md-select class="doc_form__field--long" formControlName="section">
+			<md-option value="0"></md-option>
 			<md-option *ngFor="let section of sections" [value]="section.id">{{section.name}}</md-option>
 		</md-select>
 	</label>
 	<label class="doc_form__field   doc_form__field--medium doc_form__field--padding">
 		<span class="doc_form__field-name  doc_form__field-name--short">Поправки для</span>
 		<md-select class="doc_form__field--long" formControlName="maindoc">
+			<md-option value="0"></md-option>
 	    	<md-option *ngFor="let maindoc of mainDocs" [value]="maindoc.id">от {{maindoc.date}} №{{maindoc.num}}</md-option>
 		</md-select>
 	</label>

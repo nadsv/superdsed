@@ -10,6 +10,7 @@ import { DialogsService } from '../../shared/dialog.service';
 export class TabsComponent implements OnInit {
 	activeTab: number = 0;
 	ID: number;
+	changes: number;
 
 	constructor(private sedAPI: SedApiService,
 		        private dialogsService: DialogsService, 
@@ -17,6 +18,7 @@ export class TabsComponent implements OnInit {
 
 	ngOnInit() {
 		this.ID =  this.sedAPI.id;
+		this.changes = this.sedAPI.changes.length;
 	}
 
 	onClick(event, i) {

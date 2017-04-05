@@ -1,0 +1,11 @@
+@import '../../../assets/styles/_vars.scss';
+.changes{
+	display: inline-block;
+}
+
+.changes__list-item {
+	
+	&:hover {
+		background-color: $active-text-link;
+	}
+}

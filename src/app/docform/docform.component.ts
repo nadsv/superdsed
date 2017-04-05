@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { DialogsService } from '../shared/dialog.service';
 import { SedApiService } from '../shared/sed-api.service';
-import { Section } from '../shared/section';
 import { formatDatefromMySQL } from '../shared/date-format';
 
 @Component({
@@ -15,21 +14,32 @@ import { formatDatefromMySQL } from '../shared/date-format';
 export class DocformComponent implements OnInit {
 	docForm: FormGroup;
 	doc: any = {};
-	mainDocs: any[];
-	sections: Section[];
+	mainDocs: any[] = [];
+	sections: any[] = [];
     id: number;
-    tabsVisible: boolean;
-    delBtnVisible: boolean;
+    tabsVisible: boolean = false;
+    delBtnVisible: boolean = false;
     path: string;
 
 	constructor(private sedAPI: SedApiService, 
 		        private route: ActivatedRoute,
                 private router: Router,
 		        private dialogsService: DialogsService, 
-                private viewContainerRef: ViewContainerRef) { 
+                private viewContainerRef: ViewContainerRef) {
+                 
 	}
 
 	ngOnInit() {
+        this.sedAPI.links = [];
+        this.sedAPI.changes = [];
+
+        this.route.url.subscribe( (url) => this.path = url[0].path);
+        this.route.params.subscribe( 
+            (params) => {
+                this.id = +params['id'];
+                this.fetchData( this.id ); 
+            } 
+        ); 
 		const currentDate = new Date();
 		const formatDate = currentDate.toISOString().substring(0, 10);
 
@@ -39,71 +49,57 @@ export class DocformComponent implements OnInit {
       		base: new FormControl(''),
       		date: new FormControl(formatDate, Validators.required),
       		name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      		section: new FormControl('', [Validators.required]),
+      		section: new FormControl('', Validators.required),
       		maindoc: new FormControl('')
       	});
 
-      	this.tabsVisible = false;
-        this.fetchSections();
-        this.fetchMainDocs();
-        this.fetchUsers();
-        this.route.url.subscribe( (url) => this.path = url[0].path );
-        this.route.params.subscribe( (params) => this.delBtnVisible = ( +params['id'] ) ? true : false );
-        
 	}
 
-    fetchSections() {
-        this.sedAPI.fetchData( this.sedAPI.apiUrl+this.sedAPI.urlGetSections )
-              .subscribe(
-                items => {
-                    this.sections = items;
+    fetchData( id ) {
+        this.sedAPI.fetchData(this.sedAPI.apiUrl + this.sedAPI.urlGetLists)
+            .subscribe(
+                ( items ) => {
+                    this.mainDocs = items['maiDocs'];
+                    this.sections = items['sections'];
+                    this.fetchDoc( id );
                 },
-                error => {
-                    this.dialogsService.inform('Сообщение об ошибке', 'Справочник разделов недоступен: ' + error, false, this.viewContainerRef);
-                    this.docForm.invalid = true;
-                }
+                error => this.dialogsService.inform('Сообщение об ошибке', 'Невозможно проинициализировать документ: ' + error, false, this.viewContainerRef)
             );
+
     }
 
-    fetchMainDocs() {
-        this.sedAPI.fetchData( this.sedAPI.apiUrl+this.sedAPI.urlGetMainDocs )
-              .subscribe(
-                items => {
-                    this.mainDocs = [];
-                    for ( let item of items ) {
-                        item.date = formatDatefromMySQL( item.date ); 
-                        this.mainDocs.push( item );
-                    }
+    fetchDoc( id ) {
+        if ( +id ) {
+        this.sedAPI.fetchData(this.sedAPI.apiUrl + this.sedAPI.urlGetDoc + `?id=${id}`)
+            .subscribe(
+                ( item ) => {
+                    const doc = item.doc[0];
+                    this.sedAPI.links = item.links;
+                    this.sedAPI.changes = item.changes;
+                    this.sedAPI.executors = item.executors;
+                    this.docForm.controls['num'].setValue(doc.num);
+                    this.docForm.controls['date'].setValue(doc.date);
+                    this.docForm.controls['name'].setValue(doc.name);
+                    this.docForm.controls['base'].setValue(doc.base);
+                    this.docForm.controls['status'].setValue( +doc.status );
+                    this.docForm.controls['section'].setValue(doc.id_section);
+                    this.docForm.controls['maindoc'].setValue(doc.main_doc);
+                    this.tabsVisible = true;
+                    this.delBtnVisible = true;
                 },
-                error => {
-                    this.dialogsService.inform('Сообщение об ошибке', 'Список документов незаружен.: ' + error, false, this.viewContainerRef);
-                    this.docForm.invalid = true;
-                }
+                error => { this.dialogsService.inform('Сообщение об ошибке', 'Документ не найден' + error, false, this.viewContainerRef) }
             );
-        
-    }
-
-    fetchUsers() {
-        this.sedAPI.fetchData( this.sedAPI.apiUrl + this.sedAPI.urlGetUsers )
-              .subscribe(
-                items => {
-                    this.sedAPI.users = items;
-                },
-                error => {
-                    this.dialogsService.inform('Сообщение об ошибке', 'Справочник пользователей недоступен: ' + error, false, this.viewContainerRef);
-                }
-            );
+        }
     }
 
 	onSubmit( docForm: any ) {
 		this.sedAPI.changeData(this.sedAPI.apiUrl + this.sedAPI.urlAddDoc, this.docForm.value)
 			.subscribe(
         		( item ) => {
-        			this.dialogsService.inform('Сообщение', 'Документ сохранен. Добавьте приложения и исполнителей', false, this.viewContainerRef);
         			this.tabsVisible = true;
                     this.docForm.markAsPristine();
                     this.delBtnVisible = true;
-                    window.history.pushState('', '', this.path + '/' + item.id );
+                    this.router.navigate([this.path + '/' + item.id])
                     this.id = item.id;
                     this.sedAPI.id = this.id; 
         		},

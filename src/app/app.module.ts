@@ -21,6 +21,8 @@ import { DialogComponent } from './dialog/dialog.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { UserListsComponent } from './docform/user-lists/user-lists.component';
 import { UserListComponent } from './docform/user-lists/user-list/user-list.component';
+import { CatalogsComponent } from './catalogs/catalogs.component';
+import { ChangesComponent } from './docform/changes/changes.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { UserListComponent } from './docform/user-lists/user-list/user-list.comp
         DialogComponent,
         PageNotFoundComponent,
         UserListsComponent,
-        UserListComponent
+        UserListComponent,
+        CatalogsComponent,
+        ChangesComponent
     ],
     imports: [
         BrowserModule,

@@ -7,7 +7,7 @@
 <div class="filelist-wrapper" *ngIf="files.length">
 	<md-list class="filelist">
 	  <md-list-item *ngFor="let file of files; let i=index; trackBy: trackByFn" class="filelist__list-item">
-		<a md-line href="{{file.link}}">{{file.name}}</a>
+		<a md-line href="{{file.address}}">{{file.name}}</a>
 	    <button md-icon-button (click)="onDeleteFile(i)" class="filelist__del-item">
 		        <md-icon>
 					<svg viewBox="0 0 16 16">

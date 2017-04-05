@@ -11,3 +11,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   min-width: 600px;
 }
+
+a {
+	text-decoration: none;
+	color: md-color($primary);
+
+	&:hover {
+		color: md-color($warn);
+	}
+}

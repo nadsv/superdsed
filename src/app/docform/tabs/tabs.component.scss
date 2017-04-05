@@ -11,7 +11,7 @@
 	    margin: 0;
 	    padding: 0;
 	    overflow: hidden;
-	    border-bottom: 1px solid #ccc;
+	    border-bottom: 1px solid $active-text-link;
 	    background-color: $text-background;
 	}
 
@@ -32,7 +32,7 @@
 	}
 
 	&__link:focus, .active {
-		background-color: #ccc;
+		background-color: $active-text-link;
 	}
 
 	&__content {

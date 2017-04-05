@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SedApiService } from '../shared/sed-api.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+	constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
+
+	reloadDoc() {
+		if (this.router.navigated === false) {
+    		this.router.navigateByUrl('/doc/0');
+  		} else {
+    		this.router.navigateByUrl(`/index`).then(
+      			() => {
+        			this.router.navigateByUrl(`/doc/0`);
+      		});
+  		}
+	}
 
 }

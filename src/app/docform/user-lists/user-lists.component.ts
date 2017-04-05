@@ -6,8 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user-lists.component.scss']
 })
 export class UserListsComponent implements OnInit {
-	@Input() idDoc: number;
-	@Input() users: any;
+	@Input() role: number;
 
 	constructor() { }
 
