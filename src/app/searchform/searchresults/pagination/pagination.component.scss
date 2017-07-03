@@ -1,0 +1,43 @@
+@import '../../../../assets/styles/_vars.scss';
+
+.pagination {
+	display: flex;
+	padding-left: 0; 
+	list-style: none; 
+}
+
+.page-link {
+	display: block;
+	cursor: pointer;
+	border: 1px solid $active-text-link;
+	margin-left: -1px;
+	font-size: 0.8em;
+
+	&:hover {
+		display: block;
+		background-color: $active-text-link;
+	}
+
+	a {
+		color: md-color($primary);
+		display: block;
+		min-width: 20px;
+		height: 20px;
+		text-align: center;
+		line-height: 20px;
+		padding: 3px;
+	}
+}
+
+.active {
+	background-color: md-color($accent);
+}
+
+.disabled {
+	background-color: $text-background;
+
+	a {
+		color: $active-text-link;
+	}
+}
+

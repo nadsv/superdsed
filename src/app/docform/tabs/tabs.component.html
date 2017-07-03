@@ -7,11 +7,11 @@
 	</ul>
 
 	<div id="text" class="tabs__content" [style.display]="getContentStyle(0)">
-		<app-fileloader [idDoc]="ID" type="1"></app-fileloader>
+		<app-fileloader type="1"></app-fileloader>
 	</div>
 
 	<div id="applications" class="tabs__content" [style.display]="getContentStyle(1)">
-		<app-fileloader [idDoc]="ID" type="2"></app-fileloader> 
+		<app-fileloader type="2"></app-fileloader> 
 	</div>
 	
 	<div id="changes" class="tabs__content" [style.display]="getContentStyle(2)" *ngIf="changes">

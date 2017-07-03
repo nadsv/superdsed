@@ -1,3 +1,65 @@
-<p>
-  searchform works!
-</p>
+<form class="search_form" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
+	<label class="search_form__field  search_form__field--small">
+		<span class="search_form__field-name">Номер</span>
+		<md-input maxlength="30" class="md-input" formControlName="num"></md-input>
+	</label>
+	<label class="search_form__field  search_form__field--small">
+		<span class="search_form__field-name">Дата c</span>
+		<input class="search_form__date" type="date" formControlName="dateFrom">
+	</label>
+	<label class="search_form__field  search_form__field--small">
+		<span class="search_form__field-name">Дата по</span>
+		<input class="search_form__date" type="date" formControlName="dateTo">
+	</label>
+	<label class="search_form__field   search_form__field--small search_form__field--padding">
+		<span class="search_form__field-name  search_form__field-name--short">Состояние</span>
+		<md-select class="search_form__field--long" formControlName="status">
+			<md-option value=""></md-option>
+			<md-option value="0">Действующий</md-option>
+			<md-option value="1">Отменен</md-option>
+		</md-select>
+	</label>
+	<label class="search_form__field  search_form__field--medium" maxlength="2054" >
+		<span class="search_form__field-name">Наименование</span>
+		<md-textarea class="md-textarea  search_form__field--long" formControlName="name" rows="1"></md-textarea>
+	</label>
+	<label class="search_form__field   search_form__field--medium" maxlength="2054" >
+		<span class="search_form__field-name">Основание</span>
+		<md-textarea class="md-textarea  search_form__field--long" formControlName="base" rows="1"></md-textarea>
+	</label>
+	<label class="search_form__field   search_form__field--medium search_form__field--padding">
+		<span class="search_form__field-name  search_form__field-name--short">Пользователь</span>
+		<md-select class="search_form__field--long" formControlName="user">
+			<md-option value=""></md-option>
+			<md-option  *ngFor="let user of users" value="{{user.name}}/{{user.depart}}">
+				{{user.name}}
+			</md-option>
+		</md-select>
+	</label>
+	<label class="search_form__field   search_form__field--medium search_form__field--padding">
+		<span class="search_form__field-name  search_form__field-name--short">Группа</span>
+		<md-select class="search_form__field--long" formControlName="group">
+			<md-option value=""></md-option>
+			<md-option  *ngFor="let group of groups" value="{{group}}">
+				{{group}}
+			</md-option>
+		</md-select>
+	</label>
+	<div class="search_form__action">
+		<button md-raised-button class="search_form__btn" [disabled]="searchForm.pristine">
+			<span *ngIf="!uploading">Искать</span>
+			<md-icon *ngIf="uploading">
+				<svg viewBox="0 0 40 40">
+					<use xlink:href="#loader"></use>
+				</svg> 
+			</md-icon>
+		</button>
+		<button md-raised-button class="search_form__btn" [disabled]="searchForm.pristine" (click)="onClear()" type="button">
+			Очистить
+		</button>
+	</div>
+</form>
+
+<div class="searchresults-wrapper">
+	<app-searchresults [docs]="docs"></app-searchresults>
+</div>

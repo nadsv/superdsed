@@ -25,13 +25,14 @@ export class AppComponent {
 		if (strDate === localStorage.getItem('date'))  {
 			this.sedAPI.users = JSON.parse(localStorage.getItem('users'));
 		} else {
-        this.sedAPI.fetchData( this.sedAPI.apiUrl + this.sedAPI.urlGetUsers )
+        this.sedAPI.fetchData( this.sedAPI.apiUrl + 'users' )
               .subscribe(
                 items => {
                 	localStorage.clear();
                     this.sedAPI.users = items;
 					localStorage.setItem('users', JSON.stringify(items));
 					localStorage.setItem('date', currentDate.toISOString().substring(0, 10));
+					this.sedAPI.users = JSON.parse(localStorage.getItem('users'));
                 },
                 error => this.dialogsService.inform('Сообщение об ошибке', 'Невозможно проинициализировать справочники: ' + error, false, this.viewContainerRef)
             )

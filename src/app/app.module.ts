@@ -8,6 +8,7 @@ import { routing } from './shared/app.routes';
 
 import { SedApiService } from './shared/sed-api.service';
 import { DialogsService } from './shared/dialog.service';
+import { PagerService } from './shared/pagination.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -23,6 +24,11 @@ import { UserListsComponent } from './docform/user-lists/user-lists.component';
 import { UserListComponent } from './docform/user-lists/user-list/user-list.component';
 import { CatalogsComponent } from './catalogs/catalogs.component';
 import { ChangesComponent } from './docform/changes/changes.component';
+import { SearchresultsComponent } from './searchform/searchresults/searchresults.component';
+import { PaginationComponent } from './searchform/searchresults/pagination/pagination.component';
+import { GroupcatalogComponent } from './catalogs/groupcatalog/groupcatalog.component';
+import { SectioncatalogComponent } from './catalogs/sectioncatalog/sectioncatalog.component';
+import { GarbagecollectorComponent } from './catalogs/garbagecollector/garbagecollector.component';
 
 
 @NgModule({
@@ -40,7 +46,12 @@ import { ChangesComponent } from './docform/changes/changes.component';
         UserListsComponent,
         UserListComponent,
         CatalogsComponent,
-        ChangesComponent
+        ChangesComponent,
+        SearchresultsComponent,
+        PaginationComponent,
+        GroupcatalogComponent,
+        SectioncatalogComponent,
+        GarbagecollectorComponent
     ],
     imports: [
         BrowserModule,
@@ -51,7 +62,8 @@ import { ChangesComponent } from './docform/changes/changes.component';
     ],
     providers: [
         SedApiService, 
-        DialogsService
+        DialogsService,
+        PagerService
     ],
     entryComponents: [
         DialogComponent,

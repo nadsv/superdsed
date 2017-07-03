@@ -1,0 +1,20 @@
+<div class="form-wrapper">
+	<form novalidate [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm)">
+		<md-input maxlength="100" class="md-input" type="type" formControlName="item" class="adding-item"></md-input>
+		<button md-raised-button class="btn" type="submit" [disabled]="itemForm.invalid">Добавить</button>
+	</form>
+</div>
+<div class="list-wrapper">
+	<md-list class="list">
+	  <md-list-item *ngFor="let item of items; let i=index; trackBy: trackByFn" class="list__item">
+		<a md-line >{{item.name}}</a>
+	    <button md-icon-button (click)="onDelete(item.id, i)" class="list__del-item">
+		        <md-icon>
+					<svg viewBox="0 0 16 16">
+						<use xlink:href="#delete"></use>
+					</svg> 
+		        </md-icon>
+		</button>
+	  	</md-list-item>
+	</md-list>
+</div>

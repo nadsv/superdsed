@@ -1,0 +1,32 @@
+@import '../../assets/styles/_vars.scss';
+
+.catalogs-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.item {
+	width: 280px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	cursor: pointer;
+
+	&:hover {
+		color: md-color($primary);
+	}
+
+	& ~ .item {
+		margin-left: 20px;
+	}
+
+	&__title {
+		width: 150px;
+		margin: 0 auto 0 0;
+	}
+
+	&__image {
+		width: 60px;
+	}
+}

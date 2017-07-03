@@ -8,9 +8,8 @@
 		<input class="doc_form__date" type="date" formControlName="date">
 	</label>
 	<label class="doc_form__field  doc_form__field--small">
-		<md-checkbox [checked]="false" class="form-contest__checkbox" formControlName="status" align="end">
-			<span class="doc_form__field-name">Отменен</span>
-		</md-checkbox>
+		<span class="doc_form__field-name">Дата отмены</span>
+		<input class="doc_form__date" type="date" formControlName="cancellationDate">
 	</label>
 	<label class="doc_form__field  doc_form__field--medium" maxlength="2054" >
 		<span class="doc_form__field-name">Наименование</span>
@@ -36,7 +35,14 @@
 	</label>
 	<app-tabs *ngIf="tabsVisible"></app-tabs>
 	<div class="doc_form__action">
-		<button md-raised-button class="doc_form__btn" [disabled]="docForm.invalid">Сохранить</button>
+		<button md-raised-button class="doc_form__btn" [disabled]="docForm.invalid">
+			<span *ngIf="!uploading">Сохранить</span>
+			<md-icon *ngIf="uploading">
+				<svg viewBox="0 0 40 40">
+					<use xlink:href="#loader"></use>
+				</svg> 
+			</md-icon>
+		</button>
 		<button md-raised-button class="doc_form__btn" *ngIf="delBtnVisible" (click)="onDelete()" type="button">Удалить</button>
 		<button md-raised-button class="doc_form__btn" routerLink="/" type="button">Закрыть</button>
 	</div>

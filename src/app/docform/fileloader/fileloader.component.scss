@@ -37,4 +37,24 @@
 .load-btn {
 	vertical-align: top;
 	margin: 0 10px 10px 0;
+	position: relative;
+
+	&__title {
+		min-height: 35px;
+		min-width: 100px;
+	}
+
+	&__icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -38%);
+
+		svg path,
+		svg rect {
+			fill: md-color($warn);
+		}
+	}
 }
+
+

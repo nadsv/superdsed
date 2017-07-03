@@ -1,0 +1,43 @@
+@import '../../../assets/styles/_vars.scss';
+
+.results {
+	border-collapse: collapse;
+	min-width: 600px;
+	margin: 0 auto;
+
+	&__header {
+		background-color: md-color($primary);
+		color: rgba(255, 255, 255, 0.87);
+		th {
+			font-weight: 300;
+		}
+	}
+
+	&__empty {
+		background-color: $active-text-link !important;
+	}
+
+	&__row--hover:hover {
+		background-color: $active-text-link;
+		cursor: pointer;
+	}
+
+	&__cell {
+		border: 1px solid $active-text-link;
+		padding: 7px;
+
+		&--center {
+			text-align: center;
+		}
+	}
+}
+
+.results-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.pagination-wrapper {
+	margin: 0 auto;
+}

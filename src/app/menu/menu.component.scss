@@ -3,3 +3,7 @@
 .menu-toggle {
 	color: $light;
 }
+
+.menu-item:hover svg {
+	fill: md-color($warn);
+}

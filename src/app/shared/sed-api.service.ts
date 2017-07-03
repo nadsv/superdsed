@@ -1,62 +1,59 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { Http, RequestOptions, Headers, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-
-import { File } from './file';
-import { Executant } from './executant';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class SedApiService {
-    apiUrl: string;
-    dataUrl: string;
     id: number;
+    listsChanged: boolean;
     mainDocs: any[];
     sections: any[];
     links: any[];
     users: any[];
     executors: any[];
     changes: any[]; 
-    urlDoc: string;
-    urlAddDoc: string;
+    apiUrl: string;
+    dataUrl: string;
     urlGetDoc: string;
-    urlDelDoc: string;
-    urlGetLists: string;
-    urlMainDocs: string;
-    urlGetUsers: string;
     
-
     constructor(private http: Http) {
         this.apiUrl = '/supersed/api/';
         this.dataUrl = '/supersed/data/';
-        this.urlDoc = 'doc.php';
-        this.urlAddDoc = 'add-doc.php';
         this.urlGetDoc = 'get-doc.php';
-        this.urlDelDoc = 'del-doc.php';
-        this.urlGetLists = 'lists.php';
-        this.urlGetUsers = 'users.php';
-        this.urlMainDocs = 'main-docs.php';
         this.changes = [];
         this.links = [];
         this.users = [];
     }
 
-    fetchData(url: string): Observable<any> {
-        return this.http.get(url)
+    fetchData(url: string, data?: any): Observable<any> {
+        let params = new URLSearchParams();
+        for(let key in data) {
+            params.set(key, data[key]);
+        }
+        let options = new RequestOptions({
+                search: params
+            });
+        return this.http.get(url, options)
                     .map(response => response.json())
-                    .catch(this.handleError);
-    }
-
-    fetchText(url: string): Observable<any> {
-        return this.http.get(url)
                     .catch(this.handleError);
     }
 
     changeData(url: string, item?: any): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(url, item, options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    uploadFile(url: string, item?: any): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'multipart/form-data; charset=utf-8' });
+        headers.set('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(url, item, options)

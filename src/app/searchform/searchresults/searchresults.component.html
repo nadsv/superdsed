@@ -1,0 +1,38 @@
+<div class="results-wrapper" *ngIf="docs.length>0">
+	<div  class="pagination-wrapper" [hidden]="totalPages==1">
+		<app-pagination [length]="docs.length" (onPageChanged)="onPageChanged($event)"></app-pagination>
+	</div>
+	<div>
+		<table class="results">
+			<tr class="results__header">
+				<th class="results__cell">Номер</th>
+				<th class="results__cell">Дата</th>
+				<th class="results__cell">Наименование</th>
+				<th class="results__cell">Дата<br>отмены</th>
+			</tr>
+			<tr  *ngFor="let doc of docs; let i=index; trackBy: trackByFn" routerLink="/doc/{{doc.id}}"
+			     class="results__row  results__row--hover" >
+					<td *ngIf="i>=startIndex && i<=endIndex" class="results__cell">{{doc.num}}</td>
+					<td *ngIf="i>=startIndex && i<=endIndex" class="results__cell">{{doc.fdate}}</td>
+					<td *ngIf="i>=startIndex && i<=endIndex" class="results__cell">{{doc.name}}</td>
+					<td *ngIf="i>=startIndex && i<=endIndex" class="results__cell">{{doc.cancellationDate}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="results-wrapper" *ngIf="docs.length==0">
+	<table class="results">
+		<tr class="results__header  results__empty">
+			<th class="results__cell">Номер</th>
+			<th class="results__cell">Дата</th>
+			<th class="results__cell">Наименование</th>
+			<th class="results__cell">Дата<br>отмены</th>
+		</tr>
+		<tr class="results__row">
+			<td class="results__cell"></td>
+			<td class="results__cell"></td>
+			<td class="results__cell"></td>
+			<td class="results__cell"></td>
+		</tr>
+	</table>
+</div>

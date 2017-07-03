@@ -7,7 +7,7 @@
 		<div class="item__wrapper">
 			<md-list dense>
 				<md-list-item  *ngFor="let item of items; let i = index; trackBy: trackByFn">
-					<button md-button class="item__button" type="button" (click)="chooseItem(i)">{{item}}</button>
+					<button md-button class="item__button" type="button" (click)="chooseItem(i)">{{item.name}}</button>
 				</md-list-item>
 			</md-list>
 		</div>
