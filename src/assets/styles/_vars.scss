@@ -1,0 +1,18 @@
+@import '~@angular/material/core/theming/all-theme';
+
+@include md-core();
+
+$primary: md-palette($md-deep-purple);
+$accent:  md-palette($md-amber, A200, A100, A400);
+$warn: md-palette($md-red);
+$light: rgba(255, 255, 255, 0.87);
+$text: rgba(0, 0, 0, 0.87);
+$text-background: #f1f1f1;
+$active-text-link: rgba(0, 0, 0, 0.12);
+
+$header-height: 100px; 
+$footer-height: 40px;
+
+//Layout
+
+$md: 680px;

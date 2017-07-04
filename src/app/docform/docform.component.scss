@@ -1,0 +1,90 @@
+@import '../../assets/styles/_vars.scss';
+
+.doc_form {
+	display: flex;
+	flex-direction: raw;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+
+	&__field {
+		display: block;
+		color: $text;
+
+		md-tab-group {
+			min-height: 300px;
+		}
+	}
+
+	&__field--small {
+		width: 315px;
+	}
+
+	&__field--medium {
+		width: 50% ;
+	}
+
+	&__field--large{
+		width: 100%;
+	}
+
+	&__field-name {
+		display: inline-block;
+		line-height: 50px;
+		font-size: 0.8em;
+		padding-right: 10px;
+		width: 100px;
+		text-align: right;
+		vertical-align: top;
+
+		&--short {
+			line-height: 25px;
+		}
+	}
+
+	&__date {
+		height: 38px;
+		width: 195px;
+		font-size: 16px;
+		outline: none;
+		border: none;
+		box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.12);
+		transition: 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+
+	&__date:focus {
+		box-shadow: 0 2px 0 0 md-color($primary);
+	}
+
+	&__field--long {
+		width: calc(100% - 120px);
+	}
+
+	&__field--padding {
+		padding-top: 10px;
+	}
+
+	&__btn {
+		background-color: md-color($primary);
+		color: $light;
+		min-width: 120px;
+		margin-bottom: 20px;
+
+		& ~ & {
+			margin-left: 20px;
+		}
+	}
+
+	&__action {
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	.md-tab__wrapper {
+		margin: 10px 0 10px 0;
+	}
+}
+
+app-tabs {
+	width: 100%;
+	margin: 30px 0 20px 0;
+}

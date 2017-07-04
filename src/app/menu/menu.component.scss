@@ -1,0 +1,13 @@
+@import '../../assets/styles/_vars.scss';
+
+.menu-toggle {
+	color: $light;
+}
+
+.menu-item__active{
+	color: md-color($primary);
+
+	& svg {
+		fill: md-color($primary);
+	}
+}

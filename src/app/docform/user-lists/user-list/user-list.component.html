@@ -1,0 +1,25 @@
+<h3>
+  {{title}}
+</h3>
+<div class="list">
+	<div class="item">
+		<h4 class="item__title">Не выбраны</h4>
+		<div class="item__wrapper">
+			<md-list dense>
+				<md-list-item  *ngFor="let item of items; let i = index; trackBy: trackByFn">
+					<button md-button class="item__button" type="button" (click)="chooseItem(i)">{{item.name}}</button>
+				</md-list-item>
+			</md-list>
+		</div>
+	</div>
+	<div class="item">
+		<h4 class="item__title">Выбраны</h4>
+		<div class="item__wrapper">
+			<md-list dense>
+				<md-list-item  *ngFor="let item of opted; let j = index; trackBy: trackByFn">
+					<button md-button class="item__button" type="button" (click)="retrieveItem(j)">{{item.name}}</button>
+				</md-list-item>
+			</md-list>
+		</div>
+	</div>
+</div>

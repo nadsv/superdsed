@@ -1,0 +1,49 @@
+<form class="doc_form" novalidate [formGroup]="docForm" (ngSubmit)="onSubmit(docForm)">
+	<label class="doc_form__field  doc_form__field--small">
+		<span class="doc_form__field-name">Номер</span>
+		<md-input maxlength="30" class="md-input" formControlName="num"></md-input>
+	</label>
+	<label class="doc_form__field  doc_form__field--small">
+		<span class="doc_form__field-name">Дата</span>
+		<input class="doc_form__date" type="date" formControlName="date">
+	</label>
+	<label class="doc_form__field  doc_form__field--small">
+		<span class="doc_form__field-name">Дата отмены</span>
+		<input class="doc_form__date" type="date" formControlName="cancellationDate">
+	</label>
+	<label class="doc_form__field  doc_form__field--medium" maxlength="2054" >
+		<span class="doc_form__field-name">Наименование</span>
+		<md-textarea class="md-textarea  doc_form__field--long" formControlName="name" rows="2"></md-textarea>
+	</label>
+	<label class="doc_form__field   doc_form__field--medium" maxlength="2054" >
+		<span class="doc_form__field-name">Основание</span>
+		<md-textarea class="md-textarea  doc_form__field--long" formControlName="base" rows="2"></md-textarea>
+	</label>
+    <label class="doc_form__field   doc_form__field--medium doc_form__field--padding">
+		<span class="doc_form__field-name  doc_form__field-name--short">Раздел</span>
+		<md-select class="doc_form__field--long" formControlName="section">
+			<md-option value="0"></md-option>
+			<md-option *ngFor="let section of sections" [value]="section.id">{{section.name}}</md-option>
+		</md-select>
+	</label>
+	<label class="doc_form__field   doc_form__field--medium doc_form__field--padding">
+		<span class="doc_form__field-name  doc_form__field-name--short">Поправки для</span>
+		<md-select class="doc_form__field--long" formControlName="maindoc">
+			<md-option value="0"></md-option>
+	    	<md-option *ngFor="let maindoc of mainDocs" [value]="maindoc.id">от {{maindoc.date}} №{{maindoc.num}}</md-option>
+		</md-select>
+	</label>
+	<app-tabs *ngIf="tabsVisible"></app-tabs>
+	<div class="doc_form__action">
+		<button md-raised-button class="doc_form__btn" [disabled]="docForm.invalid">
+			<span *ngIf="!uploading">Сохранить</span>
+			<md-icon *ngIf="uploading">
+				<svg viewBox="0 0 40 40">
+					<use xlink:href="#loader"></use>
+				</svg> 
+			</md-icon>
+		</button>
+		<button md-raised-button class="doc_form__btn" *ngIf="delBtnVisible" (click)="onDelete()" type="button">Удалить</button>
+		<button md-raised-button class="doc_form__btn" routerLink="/" type="button">Закрыть</button>
+	</div>
+</form>

@@ -1,0 +1,49 @@
+@import '../../../assets/styles/_vars.scss';
+
+.tabs {
+	&__wrapper {
+		border: 1px solid #ccc;
+		min-width: 640px;
+	}
+
+	&__header {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    border-bottom: 1px solid $active-text-link;
+	    background-color: $text-background;
+	}
+
+	&__link {
+		float: left;
+	    display: inline-block;
+	    color: black;
+	    text-align: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	    transition: 0.3s;
+	    font-size: 17px;
+	}
+
+	&__link:hover {
+		background-color: #ddd;
+		cursor: pointer;
+	}
+
+	&__link:focus, .active {
+		background-color: $active-text-link;
+	}
+
+	&__content {
+	    display: none;
+	    padding: 20px 20px;
+	    min-height: 200px;
+	    animation: fadeEffect 1s;
+	}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
