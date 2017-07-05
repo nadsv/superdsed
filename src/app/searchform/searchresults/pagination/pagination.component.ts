@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PagerService } from '../../../shared/pagination.service';
+import { PagerService } from './pagination.service';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+  styleUrls: ['./pagination.component.scss'],
+  providers: [ PagerService ]
 })
 export class PaginationComponent implements OnInit {
 	@Input() length;

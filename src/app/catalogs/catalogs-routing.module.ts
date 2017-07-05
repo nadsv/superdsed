@@ -7,10 +7,10 @@ import { SectioncatalogComponent } from './sectioncatalog/sectioncatalog.compone
 
 
 const catalogsRoutes = [
-	{path: 'catalogs', component: CatalogsComponent},
-    {path: 'catalogs/sections', component: SectioncatalogComponent},
-    {path: 'catalogs/groups', component: GroupcatalogComponent},
-    {path: 'catalogs/garbagecollector', component: GarbagecollectorComponent}
+	{path: '', component: CatalogsComponent},
+    {path: 'sections', component: SectioncatalogComponent},
+    {path: 'groups', component: GroupcatalogComponent},
+    {path: 'garbagecollector', component: GarbagecollectorComponent}
     ];
 
 

@@ -5,30 +5,23 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { routing } from './shared/app.routes';
+import { routing } from './app.routing';
 
 import { SedApiService } from './shared/sed-api.service';
 import { DialogsService } from './shared/dialog.service';
 import { PagerService } from './shared/pagination.service';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MenuComponent } from './menu/menu.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { DocFormModule } from './docform/docform.module';
-import { CatalogsModule } from './catalogs/catalogs.module';
 import { SearchFormModule } from './searchform/searchform.module'; 
 import { SharedModule } from './shared/shared.module'; 
-
+import { CoreModule } from './core/core.module'; 
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent,
-        FooterComponent,
-        MenuComponent,
         DialogComponent,
         PageNotFoundComponent
     ],
@@ -40,15 +33,11 @@ import { SharedModule } from './shared/shared.module';
         HttpModule,
         routing,
         DocFormModule,
-        CatalogsModule,
         SearchFormModule,
-        SharedModule
+        SharedModule,
+        CoreModule
     ],
-    providers: [
-        SedApiService, 
-        DialogsService,
-        PagerService
-    ],
+    providers: [],
     entryComponents: [
         DialogComponent,
     ],
