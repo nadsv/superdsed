@@ -15,16 +15,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
-import { DocformComponent } from './docform/docform.component';
-import { FileloaderComponent } from './docform/fileloader/fileloader.component';
-import { TabsComponent } from './docform/tabs/tabs.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
-import { UserListsComponent } from './docform/user-lists/user-lists.component';
-import { UserListComponent } from './docform/user-lists/user-list/user-list.component';
-import { ChangesComponent } from './docform/changes/changes.component';
+import { DocFormModule } from './docform/docform.module';
 import { CatalogsModule } from './catalogs/catalogs.module';
 import { SearchFormModule } from './searchform/searchform.module'; 
+import { SharedModule } from './shared/shared.module'; 
 
 
 @NgModule({
@@ -33,14 +29,8 @@ import { SearchFormModule } from './searchform/searchform.module';
         HeaderComponent,
         FooterComponent,
         MenuComponent,
-        DocformComponent,
-        FileloaderComponent,
-        TabsComponent,
         DialogComponent,
-        PageNotFoundComponent,
-        UserListsComponent,
-        UserListComponent,
-        ChangesComponent
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,
@@ -49,8 +39,10 @@ import { SearchFormModule } from './searchform/searchform.module';
         BrowserAnimationsModule,
         HttpModule,
         routing,
+        DocFormModule,
         CatalogsModule,
-        SearchFormModule
+        SearchFormModule,
+        SharedModule
     ],
     providers: [
         SedApiService, 

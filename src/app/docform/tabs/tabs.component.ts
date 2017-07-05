@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { SedApiService } from '../../shared/sed-api.service';
 import { DialogsService } from '../../shared/dialog.service';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-tabs',

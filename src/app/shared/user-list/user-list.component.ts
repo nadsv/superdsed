@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
-import { SedApiService } from '../../../shared/sed-api.service';
-import { DialogsService } from '../../../shared/dialog.service';
+import { SedApiService } from '../../shared/sed-api.service';
+import { DialogsService } from '../../shared/dialog.service';
 
 @Component({
   selector: 'app-user-list',
