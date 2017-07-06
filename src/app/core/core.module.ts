@@ -9,7 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SedApiService } from '../shared/sed-api.service';
 import { DialogsService } from '../shared/dialog.service';
 
-import { routing } from '../app.routing';
+import { RoutingModule } from '../routing.module';
 
 @NgModule ({
 	declarations: [
@@ -20,7 +20,7 @@ import { routing } from '../app.routing';
 	imports: [
 		CommonModule,
 		MaterialModule,
-		routing
+		RoutingModule
 	],
 	exports: [
 		HeaderComponent,

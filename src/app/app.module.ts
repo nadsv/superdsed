@@ -5,11 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { routing } from './app.routing';
-
-import { SedApiService } from './shared/sed-api.service';
-import { DialogsService } from './shared/dialog.service';
-import { PagerService } from './shared/pagination.service';
+import { RoutingModule } from './routing.module';
 
 import { AppComponent } from './app.component';
 import { DialogComponent } from './dialog/dialog.component';
@@ -17,13 +13,15 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { DocFormModule } from './docform/docform.module';
 import { SearchFormModule } from './searchform/searchform.module'; 
 import { SharedModule } from './shared/shared.module'; 
-import { CoreModule } from './core/core.module'; 
+import { CoreModule } from './core/core.module';
+import { DocformDetailComponent } from './docform-detail/docform-detail.component'; 
 
 @NgModule({
     declarations: [
         AppComponent,
         DialogComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        DocformDetailComponent
     ],
     imports: [
         BrowserModule,
@@ -31,7 +29,7 @@ import { CoreModule } from './core/core.module';
         MaterialModule.forRoot(),
         BrowserAnimationsModule,
         HttpModule,
-        routing,
+        RoutingModule,
         DocFormModule,
         SearchFormModule,
         SharedModule,
