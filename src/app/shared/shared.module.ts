@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 
 import { UserListComponent } from './user-list/user-list.component';
+import { DecodeHTMLPipe } from '../shared/decodeHTML.pipe'; 
 
 @NgModule({
 	declarations: [
-		UserListComponent
+		UserListComponent,
+		DecodeHTMLPipe
 	],
 	imports: [
 		MaterialModule,
@@ -15,7 +17,8 @@ import { UserListComponent } from './user-list/user-list.component';
 	exports: [
 		CommonModule,
 		MaterialModule,
-		UserListComponent
+		UserListComponent,
+		DecodeHTMLPipe,
 	] 
 })
 export class SharedModule{};

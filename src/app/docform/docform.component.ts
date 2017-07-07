@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { DialogsService } from '../shared/dialog.service';
 import { SedApiService } from '../shared/sed-api.service';
-import { decodeHtml } from '../shared/lib';
+import { decodeHtml } from '../shared/lib.module';
 
 @Component({
 	selector: 'app-docform',

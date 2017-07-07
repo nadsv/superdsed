@@ -2,7 +2,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { SedApiService } from '../shared/sed-api.service';
 import { FormControl, FormGroup, Validators  } from '@angular/forms';
 import { DialogsService } from '../shared/dialog.service';
-import { decodeHtml } from '../shared/lib';
+import { decodeHtml } from '../shared/lib.module';
 
 @Component({
   selector: 'app-searchform',

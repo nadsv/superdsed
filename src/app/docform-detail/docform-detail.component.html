@@ -1,3 +1,37 @@
-<p>
-  docform-detail works!
-</p>
+<div class="doc-detail">
+	<section class="doc-detail-data">
+		<p><span class="doc-detail__label">Номер:</span> {{doc.num | decodeHTML}}</p>
+		<p><span class="doc-detail__label">Дата:</span> {{doc.date}}</p>
+		<p><span class="doc-detail__label">Наименование:</span> {{doc.name | decodeHTML}}</p>
+		<p><span class="doc-detail__label">Раздел:</span> {{doc.section | decodeHTML}}</p>
+		<p><span class="doc-detail__label">Основание:</span> {{ doc.base | decodeHTML}}</p>
+		<p><span class="doc-detail__label">Поправки для:</span> {{doc.getMainDoc(doc.main_num, doc.main_date)}}</p>
+		<p><span class="doc-detail__label">Дата отмены:</span> {{ doc.cancellation_date}}</p>
+	</section>
+	<div class="doc-detail__exta">
+		<section class="doc-detail-section">
+		<div class="doc-detail-section__title">Текст:</div>
+			<ul>
+				<li *ngFor="let text of doc.texts;"><a href="{{text.link}}" download>№{{text.name | decodeHTML}}</a></li>
+			</ul>
+		</section>
+		<section class="doc-detail-section">
+			<div class="doc-detail-section__title">Приложения:</div>
+			<ul>
+				<li *ngFor="let application of doc.applications;"><a href="{{application.link}}" download>№{{application.name | decodeHTML}}</a></li>
+			</ul>
+		</section>
+		<section class="doc-detail-section">
+			<div class="doc-detail-section__title">Изменения:</div>
+			<ul>
+				<li *ngFor="let change of doc.changes;"><a routerLink="../{{change.id}}">№{{change.num | decodeHTML}} от {{change.date}}</a> - {{change.name | decodeHTML}}</li>
+			</ul>
+		</section>
+		<section class="doc-detail-section">
+			<div class="doc-detail-section__title">Исполнители:</div>
+			<ul>
+				<li *ngFor="let executor of doc.executors;">{{executor.name | decodeHTML}}</li>
+			</ul>
+		</section>
+	</div>
+</div>		

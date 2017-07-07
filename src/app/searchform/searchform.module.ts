@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SearchformComponent } from './searchform.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { PaginationComponent } from './searchresults/pagination/pagination.component';
+import { SharedModule } from '../shared/shared.module'; 
 
 @NgModule ({
 	declarations: [
@@ -16,7 +17,8 @@ import { PaginationComponent } from './searchresults/pagination/pagination.compo
 	imports: [
 		CommonModule,
 		MaterialModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		SharedModule
 	]
 	})
 export class SearchFormModule {}

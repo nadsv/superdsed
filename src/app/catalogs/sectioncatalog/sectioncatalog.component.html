@@ -1,7 +1,7 @@
 <div class="form-wrapper">
 	<h1>Справочник разделов</h1>
 	<form novalidate [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm)">
-		<md-input maxlength="100" class="md-input" type="type" formControlName="item" class="adding-item"></md-input>
+		<md-input maxlength="100" class="md-input" type="type" formControlName="item" class="adding-item" autofocus ></md-input>
 		<button md-raised-button class="btn" type="submit" [disabled]="itemForm.invalid">Добавить</button>
 	</form>
 </div>

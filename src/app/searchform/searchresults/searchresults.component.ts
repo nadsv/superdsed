@@ -22,7 +22,7 @@ export class SearchresultsComponent implements OnInit {
 	}
 
 	onResultRowClick( index ) {
-		this.router.navigate([ '\doc', index ]);
+		this.router.navigate([ '\doc-detail', index ]);
 	}
 
 	onPageChanged(range: any) {
