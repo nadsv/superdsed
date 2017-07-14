@@ -8,8 +8,11 @@ import { MenuComponent } from './menu/menu.component';
 
 import { SedApiService } from '../shared/sed-api.service';
 import { DialogsService } from '../shared/dialog.service';
+import { AuthService } from '../auth/auth.service';
 
 import { RoutingModule } from '../routing.module';
+
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule ({
 	declarations: [
@@ -20,7 +23,8 @@ import { RoutingModule } from '../routing.module';
 	imports: [
 		CommonModule,
 		MaterialModule,
-		RoutingModule
+		RoutingModule,
+		AuthModule
 	],
 	exports: [
 		HeaderComponent,
@@ -28,7 +32,8 @@ import { RoutingModule } from '../routing.module';
 	],
 	providers: [
 		SedApiService, 
-        DialogsService
+        DialogsService,
+        AuthService
 	]
 	})
 export class CoreModule {}

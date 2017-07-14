@@ -1,0 +1,12 @@
+@import '../../../assets/styles/_vars.scss';
+
+.auth_form{
+	font-size: 0.7em;
+	padding: 5px;
+	background-color: $light;
+	border-radius: 2px;
+
+	&__field-name {
+		font-weight: bold;
+	}
+}

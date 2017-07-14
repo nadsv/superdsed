@@ -12,9 +12,10 @@ import { DialogComponent } from './dialog/dialog.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { DocFormModule } from './docform/docform.module';
 import { SearchFormModule } from './searchform/searchform.module'; 
+import { CatalogsModule } from './catalogs/catalogs.module'; 
 import { SharedModule } from './shared/shared.module'; 
 import { CoreModule } from './core/core.module';
-import { DocformDetailComponent } from './docform-detail/docform-detail.component'; 
+import { DocformDetailComponent } from './docform-detail/docform-detail.component';
 
 
 @NgModule({
@@ -26,7 +27,6 @@ import { DocformDetailComponent } from './docform-detail/docform-detail.componen
     ],
     imports: [
         BrowserModule,
-        ReactiveFormsModule, 
         MaterialModule.forRoot(),
         BrowserAnimationsModule,
         HttpModule,
@@ -34,7 +34,8 @@ import { DocformDetailComponent } from './docform-detail/docform-detail.componen
         DocFormModule,
         SearchFormModule,
         SharedModule,
-        CoreModule
+        CoreModule,
+        CatalogsModule
     ],
     providers: [],
     entryComponents: [

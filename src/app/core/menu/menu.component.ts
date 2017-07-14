@@ -25,4 +25,9 @@ export class MenuComponent implements OnInit {
   		}
 	}
 
+  onExit() {
+    sessionStorage.clear();
+    console.log('exit');
+  }
+
 }

@@ -4,7 +4,12 @@
 	    <h1 class="app-title">{{ title }}</h1>
 	</a>
 
-	<div class="app-menu">
+	<div class="app-menu" *ngIf="authService.isAuthenticated()">
 		 <app-menu ></app-menu> 
 	</div>
+
+	<div class="app-login" *ngIf="!authService.isAuthenticated()">
+		<app-login></app-login>
+	</div>
+
 </div>
