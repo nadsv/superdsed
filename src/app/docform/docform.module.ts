@@ -11,6 +11,7 @@ import { ChangesComponent } from './changes/changes.component';
 import { SharedModule } from '../shared/shared.module';
 import { RoutingModule } from '../routing.module';
 import { ShortenPipe } from './shorten.pipe';
+import { CatalogsModule } from '../catalogs/catalogs.module';
 
 @NgModule({
 	declarations: [

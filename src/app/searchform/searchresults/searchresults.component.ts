@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../../auth/auth.service';
+
+
 @Component({
   selector: 'app-searchresults',
   templateUrl: './searchresults.component.html',
@@ -12,8 +15,10 @@ export class SearchresultsComponent implements OnInit {
 	endIndex: number;
 	totalPages: number;
 	isShowing: boolean;
+	linkToDoc: string;
 
-	constructor(private router: Router) { }
+	constructor(private router: Router,
+		        private authService: AuthService) { }
 
 	ngOnInit() {
 		this.startIndex = 0;
@@ -22,7 +27,8 @@ export class SearchresultsComponent implements OnInit {
 	}
 
 	onResultRowClick( index ) {
-		this.router.navigate([ '\doc-detail', index ]);
+		this.linkToDoc = this.authService.isAuthenticated() ? '\doc' : '\doc-detail';
+		this.router.navigate([ this.linkToDoc, index ]);
 	}
 
 	onPageChanged(range: any) {

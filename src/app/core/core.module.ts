@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SedApiService } from '../shared/sed-api.service';
 import { DialogsService } from '../shared/dialog.service';
 import { AuthService } from '../auth/auth.service';
+import { AuthGuard } from '../auth/auth-guard.service';
 
 import { RoutingModule } from '../routing.module';
 

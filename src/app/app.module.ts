@@ -16,7 +16,8 @@ import { CatalogsModule } from './catalogs/catalogs.module';
 import { SharedModule } from './shared/shared.module'; 
 import { CoreModule } from './core/core.module';
 import { DocformDetailComponent } from './docform-detail/docform-detail.component';
-
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,7 @@ import { DocformDetailComponent } from './docform-detail/docform-detail.componen
         CoreModule,
         CatalogsModule
     ],
-    providers: [],
+    providers: [AuthGuard],
     entryComponents: [
         DialogComponent,
     ],
