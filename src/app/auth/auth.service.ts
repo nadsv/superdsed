@@ -1,4 +1,5 @@
 import { Injectable, ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DialogsService } from '../shared/dialog.service';
 import { SedApiService } from '../shared/sed-api.service';
@@ -7,7 +8,8 @@ import { SedApiService } from '../shared/sed-api.service';
 export class AuthService {
 	vcRef: ViewContainerRef; 
 
-	constructor (	private sedAPI: SedApiService, 
+	constructor (	private sedAPI: SedApiService,
+                private router: Router, 
             		private dialogsService: DialogsService) {
 
 	}
@@ -25,10 +27,9 @@ export class AuthService {
         (data) => { 
           if ( +data.result ) {
             sessionStorage.setItem('auth', '1'); 
-            console.log(data.result );
+            this.router.navigate(['/']);
           } else {
             this.dialogsService.inform('Сообщение об ошибке', 'Неверные данные!', false, this.vcRef);
-            console.log(data.result );
           }
 
         },

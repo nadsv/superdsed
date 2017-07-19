@@ -1,1 +1,15 @@
-<h1>Сборщик мусора</h1>
+<div class="grabber">
+	<h1>Сборщик мусора</h1>
+	<button md-raised-button class="grabber__btn" (click)="onClick()">
+			<span *ngIf="!uploading">{{getMode() ? 'Очистить' : 'Сканировать'}}</span>
+			<md-icon *ngIf="uploading">
+				<svg viewBox="0 0 40 40">
+					<use xlink:href="#loader"></use>
+				</svg> 
+			</md-icon>
+	</button>
+	<hr class="grabber__line">
+	<ul class="grabber__files">
+		<li *ngFor="let file of files">{{file}}</li>
+	</ul>
+</div>

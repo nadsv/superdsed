@@ -1,17 +1,19 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormControl, FormGroup, Validators  } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { DialogsService } from '../shared/dialog.service';
 import { SedApiService } from '../shared/sed-api.service';
 import { decodeHtml } from '../shared/lib.module';
+import { CanComponentDeactivate } from './can-deactivate-guard.service';
 
 @Component({
 	selector: 'app-docform',
 	templateUrl: './docform.component.html',
 	styleUrls: ['./docform.component.scss']
 })
-export class DocformComponent implements OnInit {
+export class DocformComponent implements OnInit, CanComponentDeactivate {
 	docForm: FormGroup;
 	doc: any = {};
 	mainDocs: any[] = [];
@@ -160,6 +162,10 @@ export class DocformComponent implements OnInit {
                       },
                 error => { this.dialogsService.inform('Сообщение об ошибке', 'При удалении документа произошла ошибка.', false, this.viewContainerRef); }
             ); 
+    }
+
+    canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+        return true;
     }
 
 }

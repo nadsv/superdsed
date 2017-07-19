@@ -1,0 +1,15 @@
+@import '../../../assets/styles/_vars.scss';
+
+.grabber {
+	&__files {
+		font-size: 0.8em;
+		line-height: 2em;
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	&__line {
+		margin-top: 20px;
+		border-color: md-color($primary);
+	}
+}

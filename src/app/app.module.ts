@@ -18,6 +18,7 @@ import { CoreModule } from './core/core.module';
 import { DocformDetailComponent } from './docform-detail/docform-detail.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
+import { CanDeactivateGuard } from './docform/can-deactivate-guard.service';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,7 @@ import { AuthGuard } from './auth/auth-guard.service';
         CoreModule,
         CatalogsModule
     ],
-    providers: [AuthGuard],
+    providers: [AuthGuard, CanDeactivateGuard],
     entryComponents: [
         DialogComponent,
     ],

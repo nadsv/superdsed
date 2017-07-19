@@ -5,11 +5,12 @@ import { SearchformComponent } from './searchform/searchform.component';
 import { DocformComponent } from './docform/docform.component';
 import { DocformDetailComponent } from './docform-detail/docform-detail.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import { CanDeactivateGuard } from './docform/can-deactivate-guard.service';
 
 
 const routes: Routes = [
     {path: 'search', component: SearchformComponent},
-    {path: 'doc/:id', component: DocformComponent, canActivate: [AuthGuard]},
+    {path: 'doc/:id', component: DocformComponent, canActivate: [AuthGuard], canDeactivate: [CanDeactivateGuard]},
     {path: 'doc-detail/:id', component: DocformDetailComponent},
     {path: 'catalogs', loadChildren: './catalogs/catalogs.module#CatalogsModule', canActivate: [AuthGuard]},
     {path: '', redirectTo: 'search', pathMatch : 'full'},
