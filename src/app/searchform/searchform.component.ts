@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
+
+import { ExecutorService } from '../shared/executor.service';
 import { SedApiService } from '../shared/sed-api.service';
 import { FormControl, FormGroup, Validators  } from '@angular/forms';
 import { DialogsService } from '../shared/dialog.service';
@@ -13,12 +15,13 @@ export class SearchformComponent implements OnInit {
 	searchForm: FormGroup;
 	uploading: boolean;
 	docs: any;
-	users: any;
-	groups: any;
+	users: Array<any>;
+	groups: Array<any>;
 
 	constructor(private sedAPI: SedApiService,
 		        private dialogsService: DialogsService,
-		        private viewContainerRef: ViewContainerRef) {
+		        private viewContainerRef: ViewContainerRef,
+		        private executor: ExecutorService) {
 	}
 
 	ngOnInit() {
@@ -52,10 +55,8 @@ export class SearchformComponent implements OnInit {
 	      		name: new FormControl()
       	})	
 			}
-      	this.users = this.sedAPI.users;
-    	this.groups = this.sedAPI.users.map( item => item['depart'] ).sort();
-	  	this.groups = this.groups.filter((x, i, a) => a.indexOf(x) == i); //get unique values
-	  	this.groups.unshift( 'BCE' );
+      	this.users = this.executor.users;
+    	this.groups = this.executor.groups;
 	}
 
 	
@@ -81,6 +82,10 @@ export class SearchformComponent implements OnInit {
 		localStorage.removeItem('searchForm');
 		localStorage.removeItem('searchResult');
 		localStorage.removeItem('searchPage');
+	}
+
+	toStr( item ) {
+		return JSON.stringify(item);
 	}
 
 }

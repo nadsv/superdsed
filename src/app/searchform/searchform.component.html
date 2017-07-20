@@ -31,7 +31,7 @@
 		<span class="search_form__field-name  search_form__field-name--short">Пользователь</span>
 		<md-select class="search_form__field--long" formControlName="user">
 			<md-option value=""></md-option>
-			<md-option  *ngFor="let user of users" value="{{user.name}}/{{user.depart}}">
+			<md-option  *ngFor="let user of users" [value]="toStr(user)">
 				{{user.name}}
 			</md-option>
 		</md-select>

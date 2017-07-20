@@ -14,6 +14,7 @@ import { AuthGuard } from '../auth/auth-guard.service';
 import { RoutingModule } from '../routing.module';
 
 import { AuthModule } from '../auth/auth.module';
+import { ExecutorService } from '../shared/executor.service';
 
 @NgModule ({
 	declarations: [
@@ -34,7 +35,8 @@ import { AuthModule } from '../auth/auth.module';
 	providers: [
 		SedApiService, 
         DialogsService,
-        AuthService
+        AuthService,
+        ExecutorService
 	]
 	})
 export class CoreModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { SedApiService } from '../../shared/sed-api.service';
 import { DialogsService } from '../../shared/dialog.service';
+import { ExecutorService } from '../../shared/executor.service';
 
 @Component({
   selector: 'app-user-list',
@@ -15,6 +16,7 @@ export class UserListComponent implements OnInit {
 	opted: any[] = [];
 
 	constructor(private sedAPI: SedApiService,
+				private executor: ExecutorService,
 				private dialogsService: DialogsService, 
                 private viewContainerRef: ViewContainerRef) { }
 
@@ -26,16 +28,15 @@ export class UserListComponent implements OnInit {
 		}
 		switch( this.type ) {
   			case '0':  
-	  			this.items = this.sedAPI.users;
+	  			this.items = this.executor.users.filter(x => x.type == this.type);;
 	  			this.items = this.items.filter( item => this.opted.map(x => x.name ).indexOf( item.name ) < 0 ); //exclude opted items
 	  			this.title = 'Сотрудники';
 	    		break;
     		case '1':  
-	  			this.items = this.sedAPI.users.map( item => item['depart'] ).sort();
+	  			this.items = this.executor.groups;
 	  			this.items = this.items.filter((x, i, a) => a.indexOf(x) == i); //get unique values
-	  			this.items.unshift( 'BCE' );
 	  			this.items = this.items.filter( item => this.opted.map(x => x.name ).indexOf( item ) < 0 ); //exclude opted items
-	  			this.items = this.items.map( item => ({name: item, depart: item}));
+	  			this.items = this.items.map( item => ({name: item, depart: item, post: item}));
 	  			this.title = 'Группы';
 	    		break;
 		}
@@ -46,6 +47,7 @@ export class UserListComponent implements OnInit {
 							id_doc: this.sedAPI.id, 
 							name: this.items[i].name, 
 							depart: this.items[i].depart, 
+							post: this.items[i].post,
 							type: +this.type, 
 							role: +this.role 
 		};
