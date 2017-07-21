@@ -43,7 +43,7 @@ export class DocformDetailComponent implements OnInit {
                     	item.date, 
                     	item.name,
                     	item.base,
-                    	item.cancellation_date,
+                    	item.cancellationDate,
                     	item.main_num,
                     	item.main_date,
                     	item.section,
@@ -51,6 +51,7 @@ export class DocformDetailComponent implements OnInit {
                         item.changes,
                     	item.executors
                     	);
+                    console.log(this.doc);
 
                     this.doc.executors.map(
                         (executor) => {
@@ -68,7 +69,6 @@ export class DocformDetailComponent implements OnInit {
                             return text;
                         }
                         );
-                    console.log(this.doc.texts);
 
                     this.doc.applications = this.doc.links.filter(
                         (application) => {

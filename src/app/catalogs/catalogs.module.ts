@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CatalogsComponent } from './catalogs.component';
 import { GarbagecollectorComponent } from './garbagecollector/garbagecollector.component';
-import { GroupcatalogComponent } from './groupcatalog/groupcatalog.component';
 import { SectioncatalogComponent } from './sectioncatalog/sectioncatalog.component';
 import { CatalogsRoutingModule } from './catalogs-routing.module';
 
@@ -13,7 +12,6 @@ import { CatalogsRoutingModule } from './catalogs-routing.module';
 	declarations: [
 		CatalogsComponent,
 		GarbagecollectorComponent,
-		GroupcatalogComponent,
 		SectioncatalogComponent
 	],
 	imports: [

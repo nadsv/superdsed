@@ -90,7 +90,7 @@ export class DocformComponent implements OnInit, CanComponentDeactivate {
                     this.docForm.controls['date'].setValue(doc.date);
                     this.docForm.controls['name'].setValue(decodeHtml(doc.name));
                     this.docForm.controls['base'].setValue(decodeHtml(doc.base));
-                    this.docForm.controls['cancellationDate'].setValue( doc.cancellationDate );
+                    this.docForm.controls['cancellationDate'].setValue( doc.cancellation_date );
                     this.docForm.controls['section'].setValue(doc.id_section);
                     this.docForm.controls['maindoc'].setValue(doc.main_doc);
                     this.docForm.controls['id'].setValue( id );
