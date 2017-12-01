@@ -7,7 +7,7 @@
 </div>
 <div class="list-wrapper">
 	<md-list class="list">
-	  <md-list-item *ngFor="let item of items; let i=index; trackBy: trackByFn" class="list__item">
+	  <md-list-item *ngFor="let item of items; let i=index;" class="list__item">
 		<a md-line >{{item.name}}</a>
 	    <button md-icon-button (click)="onDelete(item.id, i)" class="list__del-item">
 		        <md-icon>

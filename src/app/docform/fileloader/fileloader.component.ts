@@ -12,7 +12,7 @@ import { DialogsService } from '../../shared/dialog.service';
 export class FileloaderComponent implements OnInit {
 	@Input() type: string;
 	@ViewChild('fileInput') fileInputVariable: any;
-	private files: any[];
+	files: any[];
 	private idDoc: number;
 	private  MAX_FILE_SIZE = 40000000;
 	uploading: boolean = false;

@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CatalogsComponent } from './catalogs.component';
 import { GarbagecollectorComponent } from './garbagecollector/garbagecollector.component';
 import { SectioncatalogComponent } from './sectioncatalog/sectioncatalog.component';
-import { CatalogsRoutingModule } from './catalogs-routing.module';
+import { RoutingModule } from '../routing.module';
 
 @NgModule ({
 	declarations: [
@@ -18,7 +18,8 @@ import { CatalogsRoutingModule } from './catalogs-routing.module';
 		CommonModule,
 		MaterialModule,
 		ReactiveFormsModule,
-		CatalogsRoutingModule
+		RoutingModule
+	//	CatalogsRoutingModule
 	]
 })
 export class CatalogsModule {

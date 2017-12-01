@@ -22,18 +22,24 @@ export class ExecutorService {
     const strDate = currentDate.toISOString().substring(0, 10);
     if (strDate === localStorage.getItem('date'))  {
       this.executors = JSON.parse(localStorage.getItem('users'));
+      this.formUserLists();
     } else {
         this.sedAPI.fetchData( this.sedAPI.apiUrl + 'users' )
               .subscribe(
                 items => {
+                    console.log('Local storage ', items);
                     localStorage.clear();
                     localStorage.setItem('users', JSON.stringify(items));
                     localStorage.setItem('date', currentDate.toISOString().substring(0, 10));
-                    this.executors = JSON.parse(localStorage.getItem('users'));
+                    this.executors = items;
+                    this.formUserLists();
                 },
                 error => this.dialogsService.inform('Сообщение об ошибке', 'Невозможно проинициализировать справочники: ' + error, false, this.vcRef)
             )
         }
+    }
+
+    formUserLists() {
       this.groups = this.executors.filter( item => item['type'] === 1).map( item => item['depart'] );
       this.users =  this.executors.filter( item => item['type'] === 0);
     }

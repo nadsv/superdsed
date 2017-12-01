@@ -10,16 +10,18 @@ import { RoutingModule } from './routing.module';
 import { AppComponent } from './app.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import { CatalogsModule } from './catalogs/catalogs.module'; 
 import { DocFormModule } from './docform/docform.module';
 import { SearchFormModule } from './searchform/searchform.module'; 
-import { CatalogsModule } from './catalogs/catalogs.module'; 
 import { SharedModule } from './shared/shared.module'; 
 import { CoreModule } from './core/core.module';
 import { DocformDetailComponent } from './docform-detail/docform-detail.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 import { CanDeactivateGuard } from './docform/can-deactivate-guard.service';
-
+import { CatalogsComponent } from './catalogs/catalogs.component';
+import { GarbagecollectorComponent } from './catalogs/garbagecollector/garbagecollector.component';
+import { SectioncatalogComponent } from './catalogs/sectioncatalog/sectioncatalog.component';
 
 @NgModule({
     declarations: [
@@ -34,11 +36,11 @@ import { CanDeactivateGuard } from './docform/can-deactivate-guard.service';
         BrowserAnimationsModule,
         HttpModule,
         RoutingModule,
+        CatalogsModule,
         DocFormModule,
         SearchFormModule,
         SharedModule,
-        CoreModule,
-        CatalogsModule
+        CoreModule
     ],
     providers: [AuthGuard, CanDeactivateGuard],
     entryComponents: [

@@ -51,7 +51,7 @@ export class DocformComponent implements OnInit, CanComponentDeactivate {
 		const formatDate = currentDate.toISOString().substring(0, 10);
 
 		this.docForm = new FormGroup({
-      		num: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      		num: new FormControl('', [Validators.required, Validators.minLength(1)]),
       		cancellationDate: new FormControl(''),
       		base: new FormControl(''),
       		date: new FormControl(formatDate, Validators.required),
