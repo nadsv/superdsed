@@ -96,6 +96,7 @@ export class DocformComponent implements OnInit, CanComponentDeactivate {
                     this.docForm.controls['id'].setValue( id );
                     this.tabsVisible = true;
                     this.delBtnVisible = true;
+                    this.sedAPI.setDoc( id );
                 },
                 error => { this.dialogsService.inform('Сообщение об ошибке', 'Документ не найден.', false, this.viewContainerRef) }
             );
@@ -153,6 +154,11 @@ export class DocformComponent implements OnInit, CanComponentDeactivate {
                         this.docForm.reset();
                         this.tabsVisible = false;
                         this.delBtnVisible = false;
+
+                        localStorage.setItem('searchPage', JSON.stringify(1));
+                        let docs = JSON.parse(localStorage.getItem('searchResult')).filter((doc)=> doc.id != this.id)
+                        localStorage.setItem('searchResult', JSON.stringify(docs));
+
                         this.dialogsService.inform('Сообщение', 'Документ удален', false, this.viewContainerRef)
                             .subscribe (
                                 () => this.router.navigate(['/']),

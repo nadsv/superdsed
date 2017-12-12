@@ -12,13 +12,13 @@
 		<section class="doc-detail-section">
 		<div class="doc-detail-section__title">Текст:</div>
 			<ul>
-				<li *ngFor="let text of doc.texts;"><a href="{{text.link}}" download>№{{text.name | decodeHTML}}</a></li>
+				<li *ngFor="let text of doc.texts;"><a href="{{text.link}}" download>{{text.name | decodeHTML}}</a></li>
 			</ul>
 		</section>
 		<section class="doc-detail-section">
 			<div class="doc-detail-section__title">Приложения:</div>
 			<ul>
-				<li *ngFor="let application of doc.applications;"><a href="{{application.link}}" download>№{{application.name | decodeHTML}}</a></li>
+				<li *ngFor="let application of doc.applications;"><a href="{{application.link}}" download>{{application.name | decodeHTML}}</a></li>
 			</ul>
 		</section>
 		<section class="doc-detail-section">

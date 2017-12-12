@@ -51,7 +51,6 @@ export class DocformDetailComponent implements OnInit {
                         item.changes,
                     	item.executors
                     	);
-                    console.log(this.doc);
 
                     this.doc.executors.map(
                         (executor) => {
@@ -75,13 +74,14 @@ export class DocformDetailComponent implements OnInit {
                             return (application.type === '2') ? true : false
                             }
                         ).map((application) => {
-                            application.link = `${this.sedAPI.dataUrl}${this.id}${application.type}/${application.name}`; 
+                            application.link = `${this.sedAPI.dataUrl}${this.id}/${application.type}/${application.name}`; 
                             return application;
                         }
                         );
                 },
                 error => { this.dialogsService.inform('Сообщение об ошибке', 'Документ не найден.', false, this.viewContainerRef) }
             );
+            
         }
     }
 

@@ -27,7 +27,6 @@ export class ExecutorService {
         this.sedAPI.fetchData( this.sedAPI.apiUrl + 'users' )
               .subscribe(
                 items => {
-                    console.log('Local storage ', items);
                     localStorage.clear();
                     localStorage.setItem('users', JSON.stringify(items));
                     localStorage.setItem('date', currentDate.toISOString().substring(0, 10));

@@ -1,7 +1,7 @@
 <div class="changes-wrapper" *ngIf="changes.length">
 	<md-list class="changes">
-		<md-list-item *ngFor="let change of changes; let i=index; trackBy: trackByFn" class="changes__list-item">
-			<a md-line href="doc/{{change.id}}">от {{change.date}} №{{change.num}}</a>
+		<md-list-item *ngFor="let change of changes; let i=index; trackBy: trackByFn" >
+			<button md-button class="changes__list-item" (click)="onClick(change.id)">от {{change.date}} №{{change.num}}</button>
 	  	</md-list-item>
 	</md-list>
 </div>

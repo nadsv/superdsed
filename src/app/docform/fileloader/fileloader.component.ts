@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewContainerRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { SedApiService } from '../../shared/sed-api.service';
 import { DialogsService } from '../../shared/dialog.service';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -16,16 +17,29 @@ export class FileloaderComponent implements OnInit {
 	private idDoc: number;
 	private  MAX_FILE_SIZE = 40000000;
 	uploading: boolean = false;
+	private docSubsription: Subscription;
 
 	constructor(private sedAPI: SedApiService,
 				private dialogsService: DialogsService, 
                 private viewContainerRef: ViewContainerRef) { }
 
 	ngOnInit() {
+		this.setFiles();
+		this.docSubsription = this.sedAPI.docChanged
+  		.subscribe( 
+  			( id ) => { this.setFiles() }
+  		);
+	}
+
+	setFiles() {
 		this.files = this.sedAPI.links
 				.filter(x => x.type == this.type)
 				.map((x) => { x.address = this.sedAPI.dataUrl + x.address ; return x } );
 		this.idDoc = this.sedAPI.id;
+	}
+
+	ngOnDestroy() {
+		this.docSubsription.unsubscribe();
 	}
 
 	onLoadBtnClick( event ) {

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewContainerRef } from '@angular/core';
 import { SedApiService } from '../../shared/sed-api.service';
 import { DialogsService } from '../../shared/dialog.service';
 import { ExecutorService } from '../../shared/executor.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-user-list',
@@ -14,6 +15,7 @@ export class UserListComponent implements OnInit {
 	title: string;
 	items: any[] = [];
 	opted: any[] = [];
+	private docSubsription: Subscription;
 
 	constructor(private sedAPI: SedApiService,
 				private executor: ExecutorService,
@@ -21,7 +23,19 @@ export class UserListComponent implements OnInit {
                 private viewContainerRef: ViewContainerRef) { }
 
 	ngOnInit() {
-		this.items = [];
+		this.setExecutors();
+		this.docSubsription = this.sedAPI.docChanged
+  		.subscribe( 
+  			( id ) => { this.setExecutors(); }
+  		);
+	}
+
+	ngOnDestroy() {
+		this.docSubsription.unsubscribe();
+	}
+
+	setExecutors() {
+				this.items = [];
 		this.opted = [];
 		if (this.sedAPI.executors.length) {
 			this.opted = this.sedAPI.executors.filter(x => x.type == this.type);

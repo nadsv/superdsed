@@ -4,8 +4,9 @@
 }
 
 .changes__list-item {
+	color: md-color($primary);
 	
 	&:hover {
-		background-color: $active-text-link;
+		color: md-color($warn);
 	}
 }

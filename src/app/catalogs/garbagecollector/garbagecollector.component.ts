@@ -33,7 +33,7 @@ export class GarbagecollectorComponent implements OnInit {
     } else {
         this.grabber.scann()
         .subscribe(
-          (files) => { console.log(files, files.length); 
+          (files) => { 
                        if (files.length > 0) {this.files = files; this.mode = 1 } 
                        else {this.files = ['Нет файлов для удаления'] }}
         )

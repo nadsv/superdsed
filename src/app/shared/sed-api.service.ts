@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 
 import 'rxjs/add/operator/map';
@@ -19,6 +20,7 @@ export class SedApiService {
     apiUrl: string;
     dataUrl: string;
     urlGetDoc: string;
+    docChanged = new Subject<any>();
     
     constructor(private http: Http) {
         this.apiUrl = '/supersed/api/';
@@ -72,6 +74,10 @@ export class SedApiService {
         }
         console.error(errMsg);
         return Observable.throw(errMsg);
+    }
+
+    setDoc( id ) {
+        this.docChanged.next( id );
     }
 
 }
